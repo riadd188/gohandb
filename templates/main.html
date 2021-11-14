@@ -23,12 +23,12 @@
 
 
     <div class="col-4 col-lg-2 px-1 py-2">
-        <div class="btn btn-outline-light shadow rounded h-100 p-0" data-toggle="modal" data-target="#exampleModal"
+        <div class="btn btn-outline-light shadow rounded p-0 m-0" data-toggle="modal" data-target="#exampleModal"
             data-itemid='{{item.id}}' data-itemname='{{item.place}}'>
 
-            <div class="card-body">
-                <p class="card-title" style="text-align: center; color: gray;"><small>{{item.place}}</small></p>
-                <div class="m-0 p-0">
+            <div class="card-body p-2 m-0">
+                <h5 class="card-title m-0 p-0" style="text-align: center; color: gray;"><small>{{item.place}}</small></h5>
+                <div class="m-2 p-1">
 
 
                     {% if item.state == 1 %}
