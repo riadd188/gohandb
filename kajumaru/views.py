@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Item
 from django.utils import timezone
 from datetime import datetime, timedelta, timezone
-
+from allauth.account import views
 
 # Create your views here.
 # from django.http import HttpResponse
@@ -15,6 +15,9 @@ from datetime import datetime, timedelta, timezone
 
 # def index(request):
 #     return render(request,"main.html")
+
+class LoginView(views.LoginView):
+    template_name = 'login.html'
 
 class IndexView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):

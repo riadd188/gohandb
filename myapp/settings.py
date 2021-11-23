@@ -25,7 +25,7 @@ SECRET_KEY = 'z(nt=i($0bq2l9-wxr6&u@3jrxz1xxq&j^sfuspoug24+jl40n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["153.120.65.58", "127.0.0.1"]
+ALLOWED_HOSTS = ["kajumaru.net", "127.0.0.1"]
 
 STATIC_ROOT='/usr/share/nginx/html/'
 
@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'kajumaru',
+    'widget_tweaks',
+    'allauth',
+    'allauth.account',
+    'django.contrib.sites',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +128,11 @@ STATIC_ROOT='/usr/share/nginx/html/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_URL ='/usr/share/nginx/html/media/'
+
+
+## added by morisa
+
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
