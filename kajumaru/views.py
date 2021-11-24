@@ -25,11 +25,11 @@ class IndexView(LoginRequiredMixin, View):
         for item in item_data:
             # print(type(datetime.now()))
             td = datetime.now(timezone(timedelta(hours=+9), 'JST')) - item.cleanup_date  
-            if td.seconds < 2 :
+            if td.days < 1 :
                 item.state = 1
-            elif td.seconds < item.cycle * 0.5 :
+            elif td.days < item.cycle * 0.5 :
                 item.state = 2
-            elif td.seconds < item.cycle :
+            elif td.days < item.cycle :
                 item.state = 3
             else :
                 item.state = 4
