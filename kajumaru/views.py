@@ -21,7 +21,7 @@ class LoginView(views.LoginView):
 
 class IndexView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
-        item_data = Item.objects.order_by("-id")
+        item_data = Item.objects.order_by("cycle")
         for item in item_data:
             # print(type(datetime.now()))
             td = datetime.now(timezone(timedelta(hours=+9), 'JST')) - item.cleanup_date  
