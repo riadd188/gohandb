@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class KajumaruConfig(AppConfig):
-    name = 'kajumaru'
+class GohandbConfig(AppConfig):
+    name = 'gohandb'
