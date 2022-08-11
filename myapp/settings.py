@@ -25,7 +25,7 @@ SECRET_KEY = 'z(nt=i($0bq2l9-wxr6&u@3jrxz1xxq&j^sfuspoug24+jl40n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["kajumaru.net", "127.0.0.1"]
+ALLOWED_HOSTS = ["gohandb.com", "127.0.0.1"]
 
 STATIC_ROOT='/usr/share/nginx/html/'
 
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'kajumaru',
+    'gohandb',
     'widget_tweaks',
     'allauth',
     'allauth.account',
