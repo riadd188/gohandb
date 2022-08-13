@@ -1,94 +1,230 @@
 {% extends "base.html" %}
 {% block content %}
 
+  <body>
+<main>
 
-
-<div class="row">
-<div class="col-md-8">
-<div class="row">
-    {% for item in item_data %}
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <h5 class="modal-title">清掃しましたか？</h5>
-                </div>
-                <div class="modal-footer">
-                    <!-- <a href="{% url 'index' %}"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">いいえ</button></a> -->
-                    <a href="#" class="toitem" id="toitemid"> <button type="button" class="btn btn-primary">はい</button></a>
-                </div>
-            </div>
-        </div>
+  <section class="py-4 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">お腹すいた！</h1>
+        <p class="lead text-muted">食べたいもの、作りたいもの、あるかな</p>
+        <p>
+            <div class="group text-center container">
+                <svg class="icon" aria-hidden="true" ViewBox="1 1 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
+                <input placeholder="Search" type="search" class="input">
+              </div>
+              <style>
+                /* From uiverse.io by @alexruix */
+            .group {
+             display: flex;
+             line-height: 28px;
+             align-items: center;
+             position: relative;
+             max-width: 190px;
+            }
+            
+            .input {
+             width: 100%;
+             height: 40px;
+             line-height: 28px;
+             padding: 0 1rem;
+             padding-left: 2.5rem;
+             border: 2px solid transparent;
+             border-radius: 8px;
+             outline: none;
+             background-color: #f3f3f4;
+             color: #0d0c22;
+             transition: .3s ease;
+            }
+            
+            .input::placeholder {
+             color: #9e9ea7;
+            }
+            
+            .input:focus, input:hover {
+             outline: none;
+             border-color: rgba(234,76,137,0.4);
+             background-color: #fff;
+             box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+            }
+            
+            .icon {
+             position: absolute;
+             left: 1rem;
+             fill: #9e9ea7;
+             width: 1rem;
+             height: 1rem;
+            }
+              </style>
+        </p>
+      </div>
     </div>
+  </section>
 
+  <div class="album py-5 bg-light">
+    <div class="container">
 
-    <div class="col-4 col-lg-2 px-1 py-2">
-        <div class="btn-morisa shadow p-0 m-0" data-toggle="modal" data-target="#exampleModal"
-            data-itemid='{{item.id}}' data-itemname='{{item.place}}'>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
-            <div class="card-body p-2 m-0">
-                <h5 class="card-title m-0 p-0" style="text-align: center; color: black;"><small>{{item.place}}</small></h5>
-                <div class="m-2 p-1">
-
-
-                    {% if item.state == 1 %}
-                    <!-- happy -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor"
-                        class="bi bi-emoji-heart-eyes" viewBox="0 0 16 16" style="color:rgb(221, 25, 156);">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                        <path
-                            d="M11.315 10.014a.5.5 0 0 1 .548.736A4.498 4.498 0 0 1 7.965 13a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .548-.736h.005l.017.005.067.015.252.055c.215.046.515.108.857.169.693.124 1.522.242 2.152.242.63 0 1.46-.118 2.152-.242a26.58 26.58 0 0 0 1.109-.224l.067-.015.017-.004.005-.002zM4.756 4.566c.763-1.424 4.02-.12.952 3.434-4.496-1.596-2.35-4.298-.952-3.434zm6.488 0c1.398-.864 3.544 1.838-.952 3.434-3.067-3.554.19-4.858.952-3.434z" />
-                    </svg>
-                    {% elif item.state == 2 %}
-                    <!-- normal -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor"
-                        class="bi bi-emoji-heart-eyes" viewBox="0 0 16 16" style="color:green;">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                        <path
-                            d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
-                    </svg>
-                    {% elif item.state == 3 %}
-                    <!-- danger -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor"
-                        class="bi bi-emoji-heart-eyes" viewBox="0 0 16 16" style="color:orange;">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                        <path
-                            d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
-                    </svg>
-                    {% elif item.state == 4 %}
-                    <!-- angry -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor"
-                        class="bi bi-emoji-heart-eyes" viewBox="0 0 16 16" style="color:red;">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                        <path
-                            d="M9.146 5.146a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708.708l-.647.646.647.646a.5.5 0 0 1-.708.708l-.646-.647-.646.647a.5.5 0 1 1-.708-.708l.647-.646-.647-.646a.5.5 0 0 1 0-.708zm-5 0a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 1 1 .708.708l-.647.646.647.646a.5.5 0 1 1-.708.708L5.5 7.207l-.646.647a.5.5 0 1 1-.708-.708l.647-.646-.647-.646a.5.5 0 0 1 0-.708zM10 11a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
-                    </svg>
-                    {% endif %}
-
-                </div>
-            </div>
-        </div>
-        <!-- </a> -->
-    </div>
-
-    {% endfor %}
-</div>
-</div>
-
-    <div class="col-md-4">
-        <div class="card">
-            <h5 class="card-header">KAJUMARU</h5>
             <div class="card-body">
-                <p class="mb-0">
-                    お掃除したら、ハッピーになるよ！
-                    緑は笑顔、黄色はちょっと困ってる、赤は大変！
-                    全員にこにこを目指せ！
-                </p>
+              <p class="card-text">旬の野菜を使ったおすすめの一品</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">食べたい</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">作りたい</button>
+                </div>
+                <small class="text-muted">おすすめ度</small>
+              </div>
             </div>
+          </div>
         </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+            <div class="card-body">
+              <p class="card-text">旬の野菜を使ったおすすめの一品</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">食べたい</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">作りたい</button>
+                </div>
+                <small class="text-muted">おすすめ度</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+            <div class="card-body">
+              <p class="card-text"></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">食べたい</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">作りたい</button>
+                </div>
+                <small class="text-muted">おすすめ度○</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+            <div class="card-body">
+              <p class="card-text">旬の</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">食べたい</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">作りたい</button>
+                </div>
+                <small class="text-muted">おすすめ度○</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+            <div class="card-body">
+              <p class="card-text">旬の野菜を</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">食べたい</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">作りたい</button>
+                </div>
+                <small class="text-muted">おすすめ度○</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+            <div class="card-body">
+              <p class="card-text">旬の野菜を使った</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">食べたい</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">作りたい</button>
+                </div>
+                <small class="text-muted">おすすめ度○</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+            <div class="card-body">
+              <p class="card-text">旬の野菜を使ったおすすめの</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">食べたい</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">作りたい</button>
+                </div>
+                <small class="text-muted">おすすめ度○</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+            <div class="card-body">
+              <p class="card-text">旬の野菜を使ったおすすめの一品</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">食べたい</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">作りたい</button>
+                </div>
+                <small class="text-muted">おすすめ度○</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+            <div class="card-body">
+              <p class="card-text">旬の野菜を使ったおすすめの一品</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">食べたい</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">作りたい</button>
+                </div>
+                <small class="text-muted">おすすめ</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+
+</main>
+
+
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+      
+  </body>
+</html>
 
 
 {% endblock %}
