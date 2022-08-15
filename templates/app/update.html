@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+    <h2>会員登録フォーム</h2>
+    <form class="" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" name="submit">Submit</button>
+    </form>
+</body>
+
+{% endblock %}
