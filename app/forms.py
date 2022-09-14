@@ -1,21 +1,23 @@
+from email.mime import image
 from django import forms
+from .models import Item
 
 PLACES = (
-    (1, 'パントリー'),
-    (2, 'キッチン・冷蔵庫'),
-    (3, '洗面台下'),
-    (4, 'トイレ'),
-    (5, 'リビング・たんす'),
-    (6, '下駄箱'),
-    (7, 'その他'),
+    (1, '和食'),
+    (2, '中華'),
+    (3, '洋食'),
+    (4, 'ジャンク'),
+    (5, 'おやつ'),
+    (6, 'その他'),
 )
 
 class ItemForm(forms.Form):
-    item = forms.CharField(max_length=30, label='品目名')
+    item = forms.CharField(max_length=30, label='料理名')
     place = forms.fields.ChoiceField(
-        label='保管場所',
+        label='ジャンル',
         choices = PLACES,
         required=True,
         widget=forms.widgets.Select
     )
-    memo = forms.CharField(label='備考', widget=forms.Textarea(), required=False)
+    memo = forms.CharField(label='メモ', widget=forms.Textarea(), required=False)
+    image = forms.ImageField(label= '写真')

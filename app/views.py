@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Item
 from .forms import ItemForm
 from django.utils import timezone
+from django.core.files.storage import FileSystemStorage
 
 # class IndexView(View):
 #     def get(self, request, *args, **kwargs):
@@ -27,21 +28,13 @@ class IndexView(LoginRequiredMixin, View):
                 break
 
         PLACES = (
-            (1, 'パントリー'),
-            (2, 'キッチン・冷蔵庫'),
-            (3, '洗面台下'),
-            (4, 'トイレ'),
-            (5, 'リビング・たんす'),
-            (6, '下駄箱'),
-            (7, 'その他'),
+            (1, '和食'),
+            (2, '中華'),
+            (3, '洋食'),
+            (4, 'ジャンク'),
+            (5, 'おやつ'),
+            (6, 'その他'),
         )
-        # PLACES = {
-        #     1: 'キッチン下',
-        #     2: '冷蔵庫横',
-        #     3: '洗面台下',
-        #     4: '下駄箱',
-        #     5: 'その他',
-        # }
         
         return render(request, 'app/index.html', {
             'item_data': item_data,
@@ -81,6 +74,8 @@ class AddItemView(LoginRequiredMixin, View):
             item_data.memo = form.cleaned_data['memo']
             item_data.place = form.cleaned_data['place']
             item_data.created = timezone.now()
+            image = image()
+            item_data.image = form.cleaned_data['image']
             item_data.save()
             return redirect('index')
         

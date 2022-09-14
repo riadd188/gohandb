@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from pickle import TRUE
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,11 +24,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'o3-t#ni=xn20uf(-&t03#&aydg40m%wap2c03_$7f9oc-85_tn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = TRUE
 
-ALLOWED_HOSTS = ["okaimono-memo.com", "127.0.0.1"]
+ALLOWED_HOSTS = ["gohandb.com", "127.0.0.1"]
 
-STATIC_ROOT = '/usr/share/nginx/html/' 
 
 # Application definition
 
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'imagekit'
 ]
 
 MIDDLEWARE = [
@@ -136,12 +137,23 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-#added by morisa
+# サービス内でstaticフォルダのURLパスを設定
 STATIC_URL = '/static/'
-STATIC_ROOT = '/usr/share/nginx/html/static'
 
+# collectstaticなどを行った際にファイルを設置するstaticフォルダの場所を記述（開発の際は必要ないのでコメントアウトしておく）
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+# htmlファイルなどから読み込むstaticフォルダの場所を記述
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static/')
+]
+
+# サービス内でmediaフォルダのURLパスを設定
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/usr/share/nginx/html/media'
+
+# アップロードファイルなどを読み込む際のフォルダの場所を記述
+MEDIA_ROOT = 'media/'
+
 ## added by snishii
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
