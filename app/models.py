@@ -4,8 +4,7 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 from django.db import models
-from imagekit.models import ImageSpecField, ProcessedImageField
-from imagekit.processors import ResizeToFill
+
 
 class Image(models.Model):
 
